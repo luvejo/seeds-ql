@@ -1,5 +1,9 @@
 query getSeeds {
   seeds {
     name
+    description
+    contact {
+      fullName
+    }
   }
 }

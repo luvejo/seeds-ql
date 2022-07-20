@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { ApolloServer } from 'apollo-server-micro'
 import { buildSchema } from 'type-graphql'
