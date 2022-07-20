@@ -22,26 +22,54 @@ export type Contact = {
 
 export type Query = {
   __typename?: 'Query';
+  seed: Seed;
   seeds: Array<Seed>;
+};
+
+
+export type QuerySeedArgs = {
+  slug: Scalars['String'];
 };
 
 export type Seed = {
   __typename?: 'Seed';
   contact: Contact;
   description: Scalars['String'];
-  name: Scalars['ID'];
+  name: Scalars['String'];
+  slug: Scalars['ID'];
 };
+
+export type GetSeedBySlugQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type GetSeedBySlugQuery = { __typename?: 'Query', seed: { __typename?: 'Seed', slug: string, name: string, description: string, contact: { __typename?: 'Contact', fullName: string } } };
 
 export type GetSeedsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetSeedsQuery = { __typename?: 'Query', seeds: Array<{ __typename?: 'Seed', name: string }> };
+export type GetSeedsQuery = { __typename?: 'Query', seeds: Array<{ __typename?: 'Seed', slug: string, name: string, description: string }> };
 
 
+export const GetSeedBySlugDocument = gql`
+    query getSeedBySlug($slug: String!) {
+  seed(slug: $slug) {
+    slug
+    name
+    description
+    contact {
+      fullName
+    }
+  }
+}
+    `;
 export const GetSeedsDocument = gql`
     query getSeeds {
   seeds {
+    slug
     name
+    description
   }
 }
     `;
@@ -53,6 +81,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    getSeedBySlug(variables: GetSeedBySlugQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetSeedBySlugQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetSeedBySlugQuery>(GetSeedBySlugDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getSeedBySlug', 'query');
+    },
     getSeeds(variables?: GetSeedsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetSeedsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetSeedsQuery>(GetSeedsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getSeeds', 'query');
     }

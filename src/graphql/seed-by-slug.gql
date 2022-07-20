@@ -1,0 +1,10 @@
+query getSeedBySlug($slug: String!) {
+  seed(slug: $slug) {
+    slug
+    name
+    description
+    contact {
+      fullName
+    }
+  }
+}

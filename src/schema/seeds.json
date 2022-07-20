@@ -1,5 +1,6 @@
 [
   {
+    "slug": "melfort-rutabaga",
     "name": "Melfort Rutabaga",
     "description": "Heirloom variety from New Brunswick Canada, OS Hope seeds; from friend Andrea Berry; YE Flesh, vigourous growth, uniform smooth shape ( unlike some rutabagas), good keeper.",
     "contact": {
@@ -7,6 +8,7 @@
     }
   },
   {
+    "slug": "ranger-summer-squash",
     "name": "Ranger summer squash",
     "description": "A strain of Yellow Crookneck with some res to PM; Holds well, Slow to get warty. 15+ seeds",
     "contact": {
@@ -14,6 +16,7 @@
     }
   },
   {
+    "slug": "gorbea-potato",
     "name": "Gorbea potato",
     "description": "<p>From the town of Alava in the basque region of Spain . Round tubers with very thinned yellow skin, and white pulp having high dry matter.</p><p>Quite productive, good virus resistance.</p>",
     "contact": {

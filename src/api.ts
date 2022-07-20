@@ -4,7 +4,7 @@ import { QueryClient } from 'react-query'
 import { getSdk } from '@/src/generated/graphql'
 
 const client = new GraphQLClient('http://localhost:3000/api/graphql')
-export const { getSeeds } = getSdk(client)
+export const { getSeeds, getSeedBySlug } = getSdk(client)
 
 export const queryClient = new QueryClient({
   defaultOptions: {

@@ -9,6 +9,9 @@ export class Contact {
 @ObjectType()
 export class Seed {
   @Field(() => ID)
+  slug: string
+
+  @Field(() => String)
   name: string
 
   @Field(() => String)
