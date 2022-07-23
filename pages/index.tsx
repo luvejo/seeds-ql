@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <section className="grid grid-cols-2 gap-5 ">
       {data?.seeds.map((seed) => (
-        <article className="p-5 border bg-gray-100 rounded">
+        <article className="p-5 border bg-gray-100 rounded" key={seed.slug}>
           <Link href={`/seeds/${seed.slug}`}>
             <a className="inline-block">
               <h2 className="text-xl font-bold ">{seed.name}</h2>
