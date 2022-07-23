@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "graphql-codegen",
     "dev": "next dev",
     "build": "next build",
-    "codegen": "graphql-codegen",
     "start": "next start",
     "lint": "next lint"
   },
