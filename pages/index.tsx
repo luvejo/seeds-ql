@@ -1,5 +1,5 @@
 import { dehydrate, useQuery } from 'react-query'
-import { queryClient, getSeeds } from '@/src/api'
+import { queryClient, getSeeds } from '@/graphql/api'
 import Link from 'next/link'
 
 export async function getServerSideProps() {

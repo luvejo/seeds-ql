@@ -1,5 +1,5 @@
 import { dehydrate, useQuery } from 'react-query'
-import { queryClient, getSeedBySlug } from '@/src/api'
+import { queryClient, getSeedBySlug } from '@/graphql/api'
 
 export async function getServerSideProps({ params }) {
   await queryClient.prefetchQuery('seed', () =>

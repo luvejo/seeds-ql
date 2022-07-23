@@ -1,14 +1,9 @@
-import 'reflect-metadata'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { ApolloServer } from 'apollo-server-micro'
-import { buildSchema } from 'type-graphql'
-import { SeedsResolver } from '@/src/schema/seed.resolver'
+import models from '@/graphql/models/seed.gql'
+import resolvers from '@/graphql/resolvers'
 
-const schema = await buildSchema({
-  resolvers: [SeedsResolver],
-})
-
-const server = new ApolloServer({ schema })
+const server = new ApolloServer({ typeDefs: models, resolvers })
 
 export const config = {
   api: {

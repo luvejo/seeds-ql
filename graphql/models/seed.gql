@@ -1,0 +1,15 @@
+type Contact {
+  fullName: String!
+}
+
+type Seed {
+  slug: String
+  name: String
+  description: String
+  contact: Contact
+}
+
+type Query {
+  seed(slug: String!): Seed
+  seeds: [Seed]!
+}

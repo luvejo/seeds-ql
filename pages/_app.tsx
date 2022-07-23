@@ -1,6 +1,6 @@
 import { Hydrate, QueryClientProvider } from 'react-query'
 import type { AppProps } from 'next/app'
-import { queryClient } from '@/src/api'
+import { queryClient } from '@/graphql/api'
 import MainLayout from '@/layouts/main'
 
 import '@/assets/main.css'
