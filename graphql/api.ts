@@ -3,7 +3,7 @@ import { QueryClient } from 'react-query'
 
 import { getSdk } from '@/.output/graphql'
 
-const client = new GraphQLClient('http://localhost:3000/api/graphql')
+const client = new GraphQLClient(`${process.env.HOST}/api/graphql`)
 export const { getSeeds, getSeedBySlug } = getSdk(client)
 
 export const queryClient = new QueryClient({
