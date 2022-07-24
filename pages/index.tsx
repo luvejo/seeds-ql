@@ -21,7 +21,10 @@ export default function Home() {
   return (
     <section className="grid grid-cols-2 gap-5 ">
       {data?.seeds.map((seed) => (
-        <article className="p-5 border bg-gray-100 rounded" key={seed.slug}>
+        <article
+          className="p-5 border flex flex-col bg-gray-100 rounded"
+          key={seed.slug}
+        >
           <Link href={`/seeds/${seed.slug}`}>
             <a className="inline-block">
               <h2 className="text-xl font-bold ">{seed.name}</h2>
@@ -29,14 +32,18 @@ export default function Home() {
           </Link>
 
           {/* Don't do this without proper sanitization: */}
-          <div
-            className="mt-2 line-clamp-1"
-            dangerouslySetInnerHTML={{ __html: seed.description }}
-          />
+          <section className="grow">
+            <div
+              className="mt-2 line-clamp-2 "
+              dangerouslySetInnerHTML={{ __html: seed.description }}
+            />
+          </section>
 
-          <Link href={`/seeds/${seed.slug}`} className="underline">
-            See details
-          </Link>
+          <section className="flex justify-end mt-2">
+            <Link href={`/seeds/${seed.slug}`}>
+              <a className="underline">See details</a>
+            </Link>
+          </section>
         </article>
       ))}
     </section>
