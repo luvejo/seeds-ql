@@ -11,5 +11,5 @@ type Seed {
 
 type Query {
   seed(slug: String!): Seed
-  seeds: [Seed]!
+  seeds(skip: Int, take: Int): [Seed]!
 }

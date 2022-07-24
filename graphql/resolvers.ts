@@ -1,8 +1,15 @@
-import { QuerySeedArgs, Seed } from '@/.output/graphql'
-import _seeds from '@/graphql/data.json'
+import { PrismaClient } from '@prisma/client'
+import { QuerySeedArgs, QuerySeedsArgs, Seed } from '@/.output/graphql'
 
-function seed(_ctx, { slug }: QuerySeedArgs): Seed | undefined {
-  const seed = _seeds.find((seed) => seed.slug === slug)
+const prisma = new PrismaClient()
+
+const ITEMS_PER_PAGE = 4
+
+async function seed(_ctx, { slug }: QuerySeedArgs): Promise<Seed> {
+  const seed = await prisma.seed.findFirst({
+    where: { slug },
+    include: { contact: true },
+  })
 
   if (seed === undefined) {
     throw new Error('Seed not found')
@@ -11,8 +18,17 @@ function seed(_ctx, { slug }: QuerySeedArgs): Seed | undefined {
   return seed
 }
 
-function seeds(): Seed[] {
-  return _seeds
+async function seeds(
+  _ctx,
+  { skip = 0, take = ITEMS_PER_PAGE }: QuerySeedsArgs,
+): Promise<Seed[]> {
+  const seeds = await prisma.seed.findMany({
+    orderBy: { createdAt: 'desc' },
+    skip,
+    take,
+  })
+
+  return seeds
 }
 
 export default {
