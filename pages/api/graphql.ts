@@ -6,8 +6,9 @@ import models from '@/graphql/models/seed.gql'
 import resolvers from '@/graphql/resolvers'
 
 const cors = Cors({
-  origin: ['https://studio.apollographql.com'],
+  origin: process.env.CORS?.split(',') ?? [],
 })
+
 const server = new ApolloServer({ typeDefs: models, resolvers })
 
 export const config = {
