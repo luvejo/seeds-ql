@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "graphql-codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predev": "graphql-codegen",
+    "prebuild": "graphql-codegen"
   },
   "dependencies": {
     "@prisma/client": "^4.1.0",
